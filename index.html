@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Deniz Demir · Game developer, technical artist and 3D artist</title>
+  <meta name="description" content="Portfolio of Deniz Demir: solo-developed games, hand-written shaders and 3D models, presented as a small explorable level.">
+  <meta property="og:title" content="Deniz Demir">
+  <meta property="og:description" content="Game developer, technical artist and 3D artist.">
+  <meta name="theme-color" content="#1e2247">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3 28 10v12L16 29 4 22V10z' fill='%23ff5a8a'/%3E%3Cpath d='M16 3v26M4 10l12 7 12-7' stroke='%231e2247' stroke-width='2' fill='none'/%3E%3C/svg%3E">
+  <link rel="preload" href="fonts/bricolage-grotesque-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+  <script type="importmap">
+    { "imports": {
+        "three": "./vendor/three/build/three.module.js",
+        "three/addons/": "./vendor/three/examples/jsm/"
+    } }
+  </script>
+</head>
+<body>
+  <canvas id="gl" aria-hidden="true"></canvas>
+
+  <header class="hud">
+    <a class="wordmark" href="#start">Deniz Demir</a>
+    <div class="debug">
+      <div class="views" role="radiogroup" aria-label="View mode">
+        <button type="button" role="radio" aria-checked="true" data-mode="0">Lit</button>
+        <button type="button" role="radio" aria-checked="false" data-mode="1">Wireframe</button>
+        <button type="button" role="radio" aria-checked="false" data-mode="2">Normals</button>
+        <button type="button" role="radio" aria-checked="false" data-mode="3">UVs</button>
+        <button type="button" role="radio" aria-checked="false" data-mode="4">Depth</button>
+        <button type="button" role="radio" aria-checked="false" data-mode="5">Lighting</button>
+      </div>
+      <div class="stats" aria-hidden="true"><span data-stat="fps">–</span> fps <span data-stat="calls">–</span> draws <span data-stat="tris">–</span> tris</div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ── Start ─────────────────────────────────────────── -->
+    <section class="stop stop--hero" id="start" data-stop="hero" data-group="Start" data-title="Start">
+      <div class="hero">
+        <h1>Deniz Demir</h1>
+        <p class="hero__role">Game developer, technical artist and 3D artist</p>
+        <p class="hero__lede">I build games end to end, combining gameplay programming, shader development and 3D art.</p>
+        <p class="hero__hint">Scroll or use the arrows to explore.</p>
+      </div>
+    </section>
+
+    <!-- ── Games ─────────────────────────────────────────── -->
+    <section class="stop stop--overview" id="games" data-stop="games" data-group="Games" data-title="Games">
+      <div class="panel panel--overview">
+        <h2>Games</h2>
+        <p>Three games I developed independently, covering every discipline from design to music.</p>
+        <ul class="jump jump--row">
+          <li><a href="#fatalstrike">FatalStrike</a></li>
+          <li><a href="#anarchyflips">Anarchy Flips</a></li>
+          <li><a href="#geringi">Geringi</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="stop" id="fatalstrike" data-stop="fatalstrike" data-title="FatalStrike">
+      <article class="panel">
+        <h3>FatalStrike</h3>
+        <p>A turn-based fighting game with PSX-era graphics.</p>
+        <dl class="facts">
+          <div><dt>Genre</dt><dd>Turn-based fighting</dd></div>
+          <div><dt>Platform</dt><dd>Web, PC</dd></div>
+          <div class="facts__wide"><dt>Role</dt><dd>Game Design, Programming, 3D Art, Technical Art, Music</dd></div>
+        </dl>
+        <a class="btn" href="https://denizworks.github.io/fatal-strike-web/" target="_blank" rel="noopener">Play in your browser</a>
+      </article>
+    </section>
+
+    <section class="stop" id="anarchyflips" data-stop="anarchyflips" data-title="Anarchy Flips">
+      <article class="panel">
+        <h3>Anarchy Flips</h3>
+        <p>A skating game with stylized graphics.</p>
+        <dl class="facts">
+          <div><dt>Genre</dt><dd>Arcade, Sports</dd></div>
+          <div><dt>Platform</dt><dd>itch.io</dd></div>
+          <div class="facts__wide"><dt>Role</dt><dd>Game Design, Programming, 3D Art, Technical Art, Music</dd></div>
+        </dl>
+        <a class="btn" href="https://deniz-works.itch.io/anarchy-flips" target="_blank" rel="noopener">View on itch.io</a>
+      </article>
+    </section>
+
+    <section class="stop" id="geringi" data-stop="geringi" data-title="Geringi">
+      <article class="panel">
+        <h3>Geringi</h3>
+        <p>An open-world horror game with stylized graphics.</p>
+        <dl class="facts">
+          <div><dt>Genre</dt><dd>Open-world horror</dd></div>
+          <div><dt>Platform</dt><dd>Steam (demo out now)</dd></div>
+          <div class="facts__wide"><dt>Role</dt><dd>Game Design, Programming, 3D Art, Technical Art, Music</dd></div>
+        </dl>
+        <a class="btn" href="https://store.steampowered.com/app/3594710/GERINGI_Demo/" target="_blank" rel="noopener">Get the demo on Steam</a>
+      </article>
+    </section>
+
+    <!-- ── Models & shaders ──────────────────────────────── -->
+    <section class="stop stop--overview" id="models" data-stop="lab" data-group="Models &amp; shaders" data-title="Models &amp; shaders">
+      <div class="panel panel--overview">
+        <h2>Models &amp; shaders</h2>
+        <p>Three of my models and three real-time shaders I wrote in GLSL for this page. Any shader works on any model: pick one from the list and adjust it live.</p>
+        <p class="note">The view buttons at the top switch the whole level to wireframe, normals, UVs or depth, like an engine's debug views.</p>
+      </div>
+    </section>
+
+    <!-- One section per model is added from js/config.js -->
+    <template data-model-sections></template>
+
+    <!-- ── Renders (one section per render is added from js/config.js) ── -->
+    <section class="stop stop--overview" id="renders" data-stop="renders" data-group="Renders" data-title="Renders">
+      <div class="panel panel--overview">
+        <h2>Renders</h2>
+        <p>A selection of rendered stills.</p>
+        <ul class="jump jump--row" data-render-jump></ul>
+      </div>
+    </section>
+    <template data-render-sections></template>
+
+    <!-- ── About ─────────────────────────────────────────── -->
+    <section class="stop" id="about" data-stop="about" data-group="About" data-title="About">
+      <div class="panel">
+        <h2>About</h2>
+        <p>I'm a game developer and technical artist who has been making games for more than five years. I hold a BSc in Software Engineering from Izmir University of Economics and am currently completing an MSc in Game Development &amp; Research at TH Köln. My main interests are game design and graphics programming: building systems that are fun to play and shaders that give each game its own identity.</p>
+        <a class="btn" href="https://www.canva.com/design/DAHAdO4yJik/n5HVXAn_F6iia8WPOBc4jA/view?utm_content=DAHAdO4yJik&amp;utm_campaign=designshare&amp;utm_medium=link2&amp;utm_source=uniquelinks&amp;utlId=hb17f26c1ee" target="_blank" rel="noopener">View my CV</a>
+        <h4>Tools</h4>
+        <!-- Edit this list -->
+        <ul class="tags">
+          <li>Unity 3D</li><li>C#</li><li>HLSL</li><li>Shader Graph</li><li>GLSL</li><li>Blender</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── Contact ───────────────────────────────────────── -->
+    <section class="stop" id="contact" data-stop="contact" data-group="Contact" data-title="Contact">
+      <div class="panel">
+        <h2>Contact</h2>
+        <p>Open to work, collaborations and talking shaders.</p>
+        <a class="email" href="mailto:denizworks.info@gmail.com">denizworks.info@gmail.com</a>
+        <ul class="links">
+          <li><a href="https://github.com/denizworks" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://deniz-works.itch.io/" target="_blank" rel="noopener">itch.io</a></li>
+          <li><a href="https://store.steampowered.com/app/3594710/GERINGI_Demo/" target="_blank" rel="noopener">Steam</a></li>
+        </ul>
+        <p class="colophon">Built with Three.js. Every shader on this page is hand-written.<br>© 2026 Deniz Demir</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="stepper">
+    <button type="button" class="step step--prev" data-step="-1" aria-label="Previous">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+      <span class="step__label"></span>
+    </button>
+    <button type="button" class="step step--next" data-step="1" aria-label="Next">
+      <span class="step__label"></span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+    </button>
+  </div>
+
+  <nav class="minimap" aria-label="Sections">
+    <div class="minimap__track"><span class="minimap__dot"></span></div>
+    <ol></ol>
+  </nav>
+
+  <dialog class="source" id="source">
+    <div class="source__head">
+      <h2 class="source__title">Shader source</h2>
+      <div class="source__tabs" role="tablist">
+        <button type="button" role="tab" aria-selected="true" data-tab="fragment">Fragment</button>
+        <button type="button" role="tab" aria-selected="false" data-tab="vertex">Vertex</button>
+      </div>
+      <button type="button" class="source__close" aria-label="Close">Close</button>
+    </div>
+    <pre><code></code></pre>
+  </dialog>
+
+  <dialog class="lightbox" id="lightbox">
+    <img alt="">
+    <div class="lightbox__bar">
+      <p class="lightbox__title"></p>
+      <button type="button" class="lightbox__close">Close</button>
+    </div>
+  </dialog>
+
+  <p class="gl-off-note">Your browser can't run WebGL 2, so the 3D level and live shaders are turned off. Everything else on the page still works.</p>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
